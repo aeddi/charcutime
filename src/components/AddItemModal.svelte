@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from 'svelte-i18n'
   import { appData, addItem, updateItem } from '../stores/data'
 
   let { itemId = null, onClose }: {
@@ -16,15 +17,15 @@
 
   function save() {
     const w = parseFloat(weight)
-    const t = parseFloat(target)
-    if (!name.trim() || !w || !date || !t) {
-      error = 'Please fill in all fields.'
+    const t_ = parseFloat(target)
+    if (!name.trim() || !w || !date || !t_) {
+      error = $t('modal.fillAll')
       return
     }
     if (itemId) {
-      updateItem(itemId, { name: name.trim(), initialWeight: w, initialDate: date, targetLossPercent: t })
+      updateItem(itemId, { name: name.trim(), initialWeight: w, initialDate: date, targetLossPercent: t_ })
     } else {
-      addItem({ name: name.trim(), initialWeight: w, initialDate: date, targetLossPercent: t })
+      addItem({ name: name.trim(), initialWeight: w, initialDate: date, targetLossPercent: t_ })
     }
     onClose()
   }
@@ -34,30 +35,30 @@
 <div class="modal-overlay" onclick={onClose}>
   <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events a11y_interactive_supports_focus -->
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" tabindex="-1" onclick={(e) => e.stopPropagation()}>
-    <h3 id="modal-title">{itemId ? 'Edit Item' : 'Add New Item'}</h3>
+    <h3 id="modal-title">{itemId ? $t('modal.editTitle') : $t('modal.addTitle')}</h3>
     {#if error}
       <div style="color:var(--accent);font-size:0.85rem;margin-bottom:8px;">{error}</div>
     {/if}
     <div class="form-group">
-      <label for="input-name">Name</label>
+      <label for="input-name">{$t('modal.name')}</label>
       <!-- svelte-ignore a11y_autofocus -->
-      <input id="input-name" type="text" bind:value={name} placeholder="e.g. Saucisson sec" autofocus>
+      <input id="input-name" type="text" bind:value={name} placeholder={$t('modal.namePlaceholder')} autofocus>
     </div>
     <div class="form-group">
-      <label for="input-weight">Initial Weight (g)</label>
+      <label for="input-weight">{$t('modal.initialWeight')} (g)</label>
       <input id="input-weight" type="number" bind:value={weight} min="1" step="any" placeholder="500">
     </div>
     <div class="form-group">
-      <label for="input-date">Start Date</label>
+      <label for="input-date">{$t('modal.startDate')}</label>
       <input id="input-date" type="date" bind:value={date}>
     </div>
     <div class="form-group">
-      <label for="input-target">Target Weight Loss (%)</label>
+      <label for="input-target">{$t('modal.targetLoss')}</label>
       <input id="input-target" type="number" bind:value={target} min="1" max="90" step="any" placeholder="35">
     </div>
     <div class="modal-actions">
-      <button onclick={onClose}>Cancel</button>
-      <button class="primary" onclick={save}>Save</button>
+      <button onclick={onClose}>{$t('modal.cancel')}</button>
+      <button class="primary" onclick={save}>{$t('modal.save')}</button>
     </div>
   </div>
 </div>

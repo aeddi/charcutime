@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { t } from 'svelte-i18n'
   import { appData } from '../stores/data'
   import ItemCard from './ItemCard.svelte'
 
@@ -16,14 +17,14 @@
 
 <aside class="sidebar">
   <div style="display:flex;justify-content:space-between;align-items:center;">
-    <h2>Items</h2>
-    <button class="primary" onclick={onAdd}>+ Add</button>
+    <h2>{$t('sidebar.items')}</h2>
+    <button class="primary" onclick={onAdd}>{$t('sidebar.add')}</button>
   </div>
 
   <div>
     {#if $appData.items.length === 0}
       <div style="color:var(--text-muted);font-size:0.85rem;padding:12px 0;">
-        No items yet. Click "+ Add" to start tracking.
+        {$t('sidebar.empty')}
       </div>
     {/if}
     {#each $appData.items as item (item.id)}

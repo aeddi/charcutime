@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount } from 'svelte'
+  import { t } from 'svelte-i18n'
   import Chart from 'chart.js/auto'
   import 'chartjs-adapter-date-fns'
   import { appData } from '../stores/data'
@@ -43,7 +44,7 @@
       )).toISOString().slice(0, 10)
 
       datasets.push({
-        label: `${item.name} target`,
+        label: `${item.name} ${$t('chart.target')}`,
         data: [
           { x: item.initialDate, y: item.targetLossPercent },
           { x: targetEndDate, y: item.targetLossPercent },
@@ -61,7 +62,7 @@
         const projEndDate = est.estDate.toISOString().slice(0, 10)
         if (projEndDate > lastPoint.x) {
           datasets.push({
-            label: `${item.name} projection`,
+            label: `${item.name} ${$t('chart.projection')}`,
             data: [
               { x: lastPoint.x, y: lastPoint.y },
               { x: projEndDate, y: item.targetLossPercent },
@@ -88,12 +89,12 @@
       x: {
         type: 'time' as const,
         time: { unit: 'day' as const, tooltipFormat: 'PP' },
-        title: { display: true, text: 'Date', color: '#999' },
+        title: { display: true, text: $t('chart.dateLabel'), color: '#999' },
         grid: { color: 'rgba(255,255,255,0.05)' },
         ticks: { color: '#999' },
       },
       y: {
-        title: { display: true, text: 'Weight Loss %', color: '#999' },
+        title: { display: true, text: $t('chart.lossLabel'), color: '#999' },
         beginAtZero: true,
         grid: { color: 'rgba(255,255,255,0.05)' },
         ticks: { color: '#999', callback: (v: unknown) => v + '%' },
@@ -104,15 +105,15 @@
         labels: {
           color: '#ccc',
           filter: (legendItem: { text: string }) =>
-            !legendItem.text.includes('target') && !legendItem.text.includes('projection'),
+            !legendItem.text.includes($t('chart.target')) && !legendItem.text.includes($t('chart.projection')),
         },
       },
       tooltip: {
         callbacks: {
           label: (context: { dataset: { label: string; itemId?: string }; parsed: { y: number } }) => {
             const ds = context.dataset
-            if (ds.label.includes('target')) return `${ds.label}: ${context.parsed.y}%`
-            if (ds.label.includes('projection')) return `${ds.label}: ${context.parsed.y.toFixed(1)}%`
+            if (ds.label.includes($t('chart.target'))) return `${ds.label}: ${context.parsed.y}%`
+            if (ds.label.includes($t('chart.projection'))) return `${ds.label}: ${context.parsed.y.toFixed(1)}%`
             const found = $appData.items.find(i => i.id === ds.itemId)
             if (found) {
               const y = context.parsed.y
@@ -147,7 +148,7 @@
   {#if $appData.items.length === 0}
     <div class="empty-state">
       <div style="font-size:2.5rem;">🥩</div>
-      <div>Add a charcuterie item to get started</div>
+      <div>{$t('chart.empty')}</div>
     </div>
   {/if}
 </div>

@@ -1,7 +1,9 @@
 <script lang="ts">
+  import { t, locale } from 'svelte-i18n'
   import type { Item } from '../lib/types'
   import { lossPercent, estimateCompletion } from '../lib/logic'
-  import { addMeasurement, deleteItem } from '../stores/data'
+  import { addMeasurement, deleteItem, prefs } from '../stores/data'
+  import { formatWeight, fromDisplayUnit } from '../lib/units'
   import MeasurementRow from './MeasurementRow.svelte'
 
   let { item, expanded, onToggle, onEdit }: {
@@ -18,23 +20,26 @@
   const est = $derived(estimateCompletion(item))
   const estText = $derived(
     est
-      ? est.estDate.toLocaleDateString()
-      : sorted.length < 1 ? 'Need measurements' : 'Not converging'
+      ? new Intl.DateTimeFormat($locale ?? 'en', { dateStyle: 'medium' }).format(est.estDate)
+      : sorted.length < 1 ? $t('itemCard.needMeasurements') : $t('itemCard.notConverging')
   )
   const targetWeight = $derived((item.initialWeight * (1 - item.targetLossPercent / 100)).toFixed(0))
+  const weightUnit = $derived($prefs.weightUnit)
 
   let newDate = $state(new Date().toISOString().slice(0, 10))
   let newWeight = $state('')
 
   function handleAdd() {
-    const w = parseFloat(newWeight)
-    if (!newDate || !w) return
-    addMeasurement(item.id, { date: newDate, weight: w })
+    const displayVal = parseFloat(newWeight)
+    if (!newDate || !displayVal) return
+    // Convert from display unit back to grams for storage
+    const grams = fromDisplayUnit(displayVal, weightUnit)
+    addMeasurement(item.id, { date: newDate, weight: grams })
     newWeight = ''
   }
 
   function handleDelete() {
-    if (confirm('Delete this item and all its measurements?')) {
+    if (confirm($t('itemCard.deleteConfirm'))) {
       deleteItem(item.id)
     }
   }
@@ -54,40 +59,40 @@
     <div style="font-size:0.8rem;color:var(--text-muted);">{currentLoss}%</div>
   </div>
   <div class="item-summary">
-    {item.initialWeight}g &rarr; target &minus;{item.targetLossPercent}% ({targetWeight}g)
+    {formatWeight(item.initialWeight, weightUnit)} &rarr; &minus;{item.targetLossPercent}% ({formatWeight(Number(targetWeight), weightUnit)})
   </div>
 
   {#if expanded}
     <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
     <div class="item-details" onclick={(e) => e.stopPropagation()}>
       <dl class="item-info">
-        <dt>Initial</dt><dd>{item.initialWeight}g</dd>
-        <dt>Current</dt><dd>{currentWeight}g</dd>
-        <dt>Loss</dt><dd>{currentLoss}%</dd>
-        <dt>Target</dt><dd>{item.targetLossPercent}% ({targetWeight}g)</dd>
-        <dt>Start</dt><dd>{item.initialDate}</dd>
-        <dt>Est. done</dt><dd>{estText}</dd>
+        <dt>{$t('itemCard.initial')}</dt><dd>{formatWeight(item.initialWeight, weightUnit)}</dd>
+        <dt>{$t('itemCard.current')}</dt><dd>{formatWeight(currentWeight, weightUnit)}</dd>
+        <dt>{$t('itemCard.loss')}</dt><dd>{currentLoss}%</dd>
+        <dt>{$t('itemCard.target')}</dt><dd>{item.targetLossPercent}% ({formatWeight(Number(targetWeight), weightUnit)})</dd>
+        <dt>{$t('itemCard.start')}</dt><dd>{new Intl.DateTimeFormat($locale ?? 'en', { dateStyle: 'short' }).format(new Date(item.initialDate + 'T12:00:00'))}</dd>
+        <dt>{$t('itemCard.estDone')}</dt><dd>{estText}</dd>
       </dl>
 
-      <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:6px;">Measurements</div>
+      <div style="font-size:0.8rem;color:var(--text-muted);margin-bottom:6px;">{$t('itemCard.measurements')}</div>
       <div class="measurements-list">
         {#each sorted as m, i (m.date + m.weight)}
           <MeasurementRow {item} measurement={m} index={i} />
         {/each}
         {#if sorted.length === 0}
-          <div style="font-size:0.8rem;color:var(--text-muted);padding:4px 0;">No measurements yet.</div>
+          <div style="font-size:0.8rem;color:var(--text-muted);padding:4px 0;">{$t('itemCard.noMeasurements')}</div>
         {/if}
       </div>
 
       <div class="add-measurement-form">
         <input type="date" bind:value={newDate}>
-        <input type="number" bind:value={newWeight} placeholder="Weight (g)" min="1" step="any" style="width:100px;">
-        <button onclick={handleAdd}>Add</button>
+        <input type="number" bind:value={newWeight} placeholder={$t('itemCard.weightPlaceholder')} min="0.1" step="any" style="width:110px;">
+        <button onclick={handleAdd}>{$t('itemCard.addBtn')}</button>
       </div>
 
       <div style="display:flex;gap:6px;margin-top:4px;">
-        <button onclick={() => onEdit(item.id)} style="flex:1;">Edit</button>
-        <button class="danger" onclick={handleDelete} style="flex:1;">Delete</button>
+        <button onclick={() => onEdit(item.id)} style="flex:1;">{$t('itemCard.edit')}</button>
+        <button class="danger" onclick={handleDelete} style="flex:1;">{$t('itemCard.delete')}</button>
       </div>
     </div>
   {/if}

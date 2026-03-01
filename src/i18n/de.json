@@ -1,0 +1,66 @@
+{
+  "header": {
+    "title": "CharcuTime",
+    "preferences": "Einstellungen"
+  },
+  "sidebar": {
+    "items": "Artikel",
+    "add": "+ Hinzufügen",
+    "empty": "Keine Artikel. Klicke \"+ Hinzufügen\" um zu beginnen."
+  },
+  "itemCard": {
+    "initial": "Anfang",
+    "current": "Aktuell",
+    "loss": "Verlust",
+    "target": "Ziel",
+    "start": "Start",
+    "estDone": "Voraus. Fertig",
+    "needMeasurements": "Messungen erforderlich",
+    "notConverging": "Nicht konvergent",
+    "measurements": "Messungen",
+    "noMeasurements": "Noch keine Messungen.",
+    "weightPlaceholder": "Gewicht (g)",
+    "addBtn": "Hinzufügen",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "deleteConfirm": "Diesen Artikel und alle Messungen löschen?"
+  },
+  "chart": {
+    "empty": "Füge einen Artikel hinzu, um zu beginnen",
+    "dateLabel": "Datum",
+    "lossLabel": "Gewichtsverlust %",
+    "target": "Ziel",
+    "projection": "Projektion"
+  },
+  "modal": {
+    "addTitle": "Neuer Artikel",
+    "editTitle": "Artikel bearbeiten",
+    "name": "Name",
+    "namePlaceholder": "z.B. Trockenwurst",
+    "initialWeight": "Anfangsgewicht",
+    "startDate": "Startdatum",
+    "targetLoss": "Ziel-Gewichtsverlust (%)",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "fillAll": "Bitte alle Felder ausfüllen."
+  },
+  "prefs": {
+    "title": "Einstellungen",
+    "units": "Einheiten",
+    "weightUnit": "Gewichtseinheit",
+    "weightUnitG": "Gramm / kg",
+    "weightUnitOz": "Oz / lb",
+    "dateFormat": "Datumsformat",
+    "dateFormatAuto": "Auto (nach Sprache)",
+    "dateFormatDmy": "TT.MM.JJJJ",
+    "dateFormatMdy": "MM/TT/JJJJ",
+    "language": "Sprache",
+    "languageComingSoon": "Demnächst",
+    "sync": "Synchronisierung",
+    "syncComingSoon": "Demnächst",
+    "data": "Daten",
+    "export": "Backup exportieren (JSON)",
+    "import": "Backup importieren (JSON)",
+    "importFailed": "Import fehlgeschlagen"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "header": {
+    "title": "CharcuTime",
+    "preferences": "Preferences"
+  },
+  "sidebar": {
+    "items": "Items",
+    "add": "+ Add",
+    "empty": "No items yet. Click \"+ Add\" to start tracking."
+  },
+  "itemCard": {
+    "initial": "Initial",
+    "current": "Current",
+    "loss": "Loss",
+    "target": "Target",
+    "start": "Start",
+    "estDone": "Est. done",
+    "needMeasurements": "Need measurements",
+    "notConverging": "Not converging",
+    "measurements": "Measurements",
+    "noMeasurements": "No measurements yet.",
+    "weightPlaceholder": "Weight (g)",
+    "addBtn": "Add",
+    "edit": "Edit",
+    "delete": "Delete",
+    "deleteConfirm": "Delete this item and all its measurements?"
+  },
+  "chart": {
+    "empty": "Add a charcuterie item to get started",
+    "dateLabel": "Date",
+    "lossLabel": "Weight Loss %",
+    "target": "target",
+    "projection": "projection"
+  },
+  "modal": {
+    "addTitle": "Add New Item",
+    "editTitle": "Edit Item",
+    "name": "Name",
+    "namePlaceholder": "e.g. Saucisson sec",
+    "initialWeight": "Initial Weight",
+    "startDate": "Start Date",
+    "targetLoss": "Target Weight Loss (%)",
+    "cancel": "Cancel",
+    "save": "Save",
+    "fillAll": "Please fill in all fields."
+  },
+  "prefs": {
+    "title": "Preferences",
+    "units": "Units",
+    "weightUnit": "Weight unit",
+    "weightUnitG": "Grams / kg",
+    "weightUnitOz": "Oz / lb",
+    "dateFormat": "Date format",
+    "dateFormatAuto": "Auto (from language)",
+    "dateFormatDmy": "DD/MM/YYYY",
+    "dateFormatMdy": "MM/DD/YYYY",
+    "language": "Language",
+    "languageComingSoon": "Coming soon",
+    "sync": "Sync",
+    "syncComingSoon": "Coming soon",
+    "data": "Data",
+    "export": "Export backup (JSON)",
+    "import": "Import backup (JSON)",
+    "importFailed": "Import failed"
+  }
+}

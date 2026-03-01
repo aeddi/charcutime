@@ -1,10 +1,12 @@
 <script lang="ts">
+  import { t } from 'svelte-i18n'
+
   let { onSettingsClick }: { onSettingsClick: () => void } = $props()
 </script>
 
 <header>
   <h1>Charcu<span>Time</span></h1>
-  <button class="gear-btn" onclick={onSettingsClick} title="Preferences" aria-label="Preferences">
+  <button class="gear-btn" onclick={onSettingsClick} title={$t('header.preferences')} aria-label={$t('header.preferences')}>
     ⚙
   </button>
 </header>

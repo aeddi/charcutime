@@ -1,0 +1,66 @@
+{
+  "header": {
+    "title": "CharcuTime",
+    "preferences": "Preferencias"
+  },
+  "sidebar": {
+    "items": "Artículos",
+    "add": "+ Añadir",
+    "empty": "Sin artículos. Haz clic en \"+ Añadir\" para empezar."
+  },
+  "itemCard": {
+    "initial": "Inicial",
+    "current": "Actual",
+    "loss": "Pérdida",
+    "target": "Objetivo",
+    "start": "Inicio",
+    "estDone": "Fin estimado",
+    "needMeasurements": "Se necesitan medidas",
+    "notConverging": "No converge",
+    "measurements": "Medidas",
+    "noMeasurements": "Sin medidas todavía.",
+    "weightPlaceholder": "Peso (g)",
+    "addBtn": "Añadir",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "deleteConfirm": "¿Eliminar este artículo y todas sus medidas?"
+  },
+  "chart": {
+    "empty": "Añade un artículo para empezar",
+    "dateLabel": "Fecha",
+    "lossLabel": "Pérdida de peso %",
+    "target": "objetivo",
+    "projection": "proyección"
+  },
+  "modal": {
+    "addTitle": "Nuevo artículo",
+    "editTitle": "Editar artículo",
+    "name": "Nombre",
+    "namePlaceholder": "ej. Salchichón seco",
+    "initialWeight": "Peso inicial",
+    "startDate": "Fecha de inicio",
+    "targetLoss": "Pérdida de peso objetivo (%)",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "fillAll": "Por favor, rellena todos los campos."
+  },
+  "prefs": {
+    "title": "Preferencias",
+    "units": "Unidades",
+    "weightUnit": "Unidad de peso",
+    "weightUnitG": "Gramos / kg",
+    "weightUnitOz": "Oz / lb",
+    "dateFormat": "Formato de fecha",
+    "dateFormatAuto": "Auto (según idioma)",
+    "dateFormatDmy": "DD/MM/AAAA",
+    "dateFormatMdy": "MM/DD/AAAA",
+    "language": "Idioma",
+    "languageComingSoon": "Próximamente",
+    "sync": "Sincronización",
+    "syncComingSoon": "Próximamente",
+    "data": "Datos",
+    "export": "Exportar copia (JSON)",
+    "import": "Importar copia (JSON)",
+    "importFailed": "Error al importar"
+  }
+}

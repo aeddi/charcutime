@@ -1,0 +1,66 @@
+{
+  "header": {
+    "title": "CharcuTime",
+    "preferences": "Préférences"
+  },
+  "sidebar": {
+    "items": "Articles",
+    "add": "+ Ajouter",
+    "empty": "Aucun article. Cliquez sur \"+ Ajouter\" pour commencer."
+  },
+  "itemCard": {
+    "initial": "Initial",
+    "current": "Actuel",
+    "loss": "Perte",
+    "target": "Objectif",
+    "start": "Début",
+    "estDone": "Fin estimée",
+    "needMeasurements": "Mesures requises",
+    "notConverging": "Non convergent",
+    "measurements": "Mesures",
+    "noMeasurements": "Aucune mesure pour l'instant.",
+    "weightPlaceholder": "Poids (g)",
+    "addBtn": "Ajouter",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "deleteConfirm": "Supprimer cet article et toutes ses mesures ?"
+  },
+  "chart": {
+    "empty": "Ajoutez un article pour commencer",
+    "dateLabel": "Date",
+    "lossLabel": "Perte de poids %",
+    "target": "objectif",
+    "projection": "projection"
+  },
+  "modal": {
+    "addTitle": "Nouvel article",
+    "editTitle": "Modifier l'article",
+    "name": "Nom",
+    "namePlaceholder": "ex. Saucisson sec",
+    "initialWeight": "Poids initial",
+    "startDate": "Date de début",
+    "targetLoss": "Perte de poids cible (%)",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "fillAll": "Veuillez remplir tous les champs."
+  },
+  "prefs": {
+    "title": "Préférences",
+    "units": "Unités",
+    "weightUnit": "Unité de poids",
+    "weightUnitG": "Grammes / kg",
+    "weightUnitOz": "Oz / lb",
+    "dateFormat": "Format de date",
+    "dateFormatAuto": "Auto (selon la langue)",
+    "dateFormatDmy": "JJ/MM/AAAA",
+    "dateFormatMdy": "MM/JJ/AAAA",
+    "language": "Langue",
+    "languageComingSoon": "Bientôt disponible",
+    "sync": "Synchronisation",
+    "syncComingSoon": "Bientôt disponible",
+    "data": "Données",
+    "export": "Exporter (JSON)",
+    "import": "Importer (JSON)",
+    "importFailed": "Échec de l'importation"
+  }
+}
