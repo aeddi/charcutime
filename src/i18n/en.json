@@ -62,5 +62,31 @@
     "export": "Export backup (JSON)",
     "import": "Import backup (JSON)",
     "importFailed": "Import failed"
+  },
+  "sync": {
+    "loginTitle": "Sign in with GitHub",
+    "loginInstructions": "Visit the link below and enter this code to authorize CharcuTime:",
+    "openGitHub": "Open github.com/login/device",
+    "copyCode": "Copy code",
+    "cancel": "Cancel",
+    "waitingForAuth": "Waiting for authorization…",
+    "starting": "Starting authorization…",
+    "loginBtn": "Sign in with GitHub",
+    "logout": "Sign out",
+    "syncNow": "Sync now",
+    "forceUpload": "Force upload (local → remote)",
+    "forceDownload": "Force download (remote → local)",
+    "syncing": "Syncing…",
+    "lastSynced": "Last synced",
+    "never": "never",
+    "loggedInAs": "Signed in as",
+    "conflictTitle": "Sync Conflict",
+    "conflictDesc": "Both local and remote data exist. How would you like to resolve this?",
+    "local": "Local",
+    "remote": "Remote (Gist)",
+    "items": "items",
+    "merge": "Merge (recommended)",
+    "keepLocal": "Keep local",
+    "keepRemote": "Keep remote"
   }
 }

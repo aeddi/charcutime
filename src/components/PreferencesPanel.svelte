@@ -1,10 +1,9 @@
 <script lang="ts">
   import { t, locale } from 'svelte-i18n'
-  import { prefs, updatePrefs, exportData, importDataFromFile } from '../stores/data'
-  import { SUPPORTED_LOCALES, LOCALE_LABELS, resolveLocale } from '../i18n'
-  import { setupI18n } from '../i18n'
+  import { prefs, updatePrefs, exportData, importDataFromFile, syncState, syncNow, startLogin, logout } from '../stores/data'
+  import { SUPPORTED_LOCALES, LOCALE_LABELS, resolveLocale, setupI18n } from '../i18n'
 
-  let { onClose }: { onClose: () => void } = $props()
+  let { onClose, onStartLogin }: { onClose: () => void; onStartLogin: () => void } = $props()
 
   let fileInput: HTMLInputElement
 
@@ -25,8 +24,8 @@
     fileInput.value = ''
   }
 
-  // Derive current locale for the selector (fallback to resolved from navigator)
   const currentLocale = $derived($prefs.language ?? resolveLocale(null))
+  const isSyncing = $derived($syncState.status === 'syncing' || $syncState.status === 'polling')
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
@@ -79,10 +78,29 @@
 
     <div class="pref-section">
       <h3>{$t('prefs.sync')}</h3>
-      <div class="pref-row">
-        <span>GitHub Gist</span>
-        <span style="color:var(--text-muted);font-size:0.85rem;">{$t('prefs.syncComingSoon')}</span>
-      </div>
+      {#if $syncState.username}
+        <div class="pref-row" style="margin-bottom:6px;">
+          <span>{$t('sync.loggedInAs')}</span>
+          <span style="font-weight:600;">@{$syncState.username}</span>
+        </div>
+        <div class="pref-row" style="margin-bottom:12px;font-size:0.8rem;color:var(--text-muted);">
+          <span>{$t('sync.lastSynced')}</span>
+          <span>{$syncState.lastSynced ? new Date($syncState.lastSynced).toLocaleString() : $t('sync.never')}</span>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <button onclick={() => syncNow()} disabled={isSyncing}>
+            {isSyncing ? $t('sync.syncing') : $t('sync.syncNow')}
+          </button>
+          <button onclick={() => syncNow({ forceDirection: 'upload' })} disabled={isSyncing}>{$t('sync.forceUpload')}</button>
+          <button onclick={() => syncNow({ forceDirection: 'download' })} disabled={isSyncing}>{$t('sync.forceDownload')}</button>
+          <button class="danger" onclick={logout}>{$t('sync.logout')}</button>
+        </div>
+        {#if $syncState.error}
+          <p style="color:var(--accent);font-size:0.8rem;margin-top:8px;">{$syncState.error}</p>
+        {/if}
+      {:else}
+        <button onclick={onStartLogin}>{$t('sync.loginBtn')}</button>
+      {/if}
     </div>
 
     <div class="pref-section">

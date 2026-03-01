@@ -62,5 +62,31 @@
     "export": "Exportar copia (JSON)",
     "import": "Importar copia (JSON)",
     "importFailed": "Error al importar"
+  },
+  "sync": {
+    "loginTitle": "Iniciar sesión con GitHub",
+    "loginInstructions": "Visita el enlace y escribe este código para autorizar CharcuTime:",
+    "openGitHub": "Abrir github.com/login/device",
+    "copyCode": "Copiar código",
+    "cancel": "Cancelar",
+    "waitingForAuth": "Esperando autorización…",
+    "starting": "Iniciando autorización…",
+    "loginBtn": "Iniciar sesión con GitHub",
+    "logout": "Cerrar sesión",
+    "syncNow": "Sincronizar ahora",
+    "forceUpload": "Forzar subida (local → remoto)",
+    "forceDownload": "Forzar descarga (remoto → local)",
+    "syncing": "Sincronizando…",
+    "lastSynced": "Última sincronización",
+    "never": "nunca",
+    "loggedInAs": "Sesión como",
+    "conflictTitle": "Conflicto de sincronización",
+    "conflictDesc": "Existen datos locales y remotos. ¿Cómo quieres resolverlo?",
+    "local": "Local",
+    "remote": "Remoto (Gist)",
+    "items": "artículos",
+    "merge": "Combinar (recomendado)",
+    "keepLocal": "Mantener local",
+    "keepRemote": "Mantener remoto"
   }
 }
