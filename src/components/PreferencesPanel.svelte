@@ -2,6 +2,7 @@
   import { t, locale } from 'svelte-i18n'
   import { prefs, updatePrefs, exportData, importDataFromFile, syncState, syncNow, startLogin, logout } from '../stores/data'
   import { SUPPORTED_LOCALES, LOCALE_LABELS, resolveLocale, setupI18n } from '../i18n'
+  import { version } from '../../package.json'
 
   let { onClose, onStartLogin }: { onClose: () => void; onStartLogin: () => void } = $props()
 
@@ -110,6 +111,10 @@
         <button onclick={() => fileInput.click()}>{$t('prefs.import')}</button>
         <input bind:this={fileInput} type="file" accept=".json" style="display:none" onchange={handleImport}>
       </div>
+    </div>
+
+    <div style="margin-top:16px;text-align:center;font-size:0.75rem;color:var(--text-muted);">
+      v{version}
     </div>
   </div>
 </div>

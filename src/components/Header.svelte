@@ -5,17 +5,26 @@
 </script>
 
 <header>
-  <h1>Charcu<span>Time</span></h1>
+  <h1><img src="{import.meta.env.BASE_URL}icon.svg" alt="" class="logo" aria-hidden="true" />Charcu<span>Time</span></h1>
   <button class="gear-btn" onclick={onSettingsClick} title={$t('header.preferences')} aria-label={$t('header.preferences')}>
     ⚙
   </button>
 </header>
 
 <style>
+  h1 {
+    display: flex;
+    align-items: center;
+  }
+  .logo {
+    height: 1.6em;
+    width: 1.6em;
+    margin-right: 0.4em;
+  }
   .gear-btn {
     background: none;
     border: none;
-    font-size: 1.4rem;
+    font-size: 2.6rem;
     cursor: pointer;
     color: var(--text-muted);
     padding: 4px 8px;

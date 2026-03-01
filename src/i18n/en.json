@@ -19,7 +19,7 @@
     "notConverging": "Not converging",
     "measurements": "Measurements",
     "noMeasurements": "No measurements yet.",
-    "weightPlaceholder": "Weight (g)",
+    "weightPlaceholder": "Weight",
     "addBtn": "Add",
     "edit": "Edit",
     "delete": "Delete",
@@ -30,7 +30,8 @@
     "dateLabel": "Date",
     "lossLabel": "Weight Loss %",
     "target": "target",
-    "projection": "projection"
+    "projection": "projection",
+    "loss": "loss"
   },
   "modal": {
     "addTitle": "Add New Item",

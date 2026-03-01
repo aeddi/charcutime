@@ -9,13 +9,13 @@
   "theme_color": "#e94560",
   "icons": [
     {
-      "src": "/charcutime/icon.svg",
+      "src": "/charcutime/icon-bg.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
-      "src": "/charcutime/icon.svg",
+      "src": "/charcutime/icon-maskable.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "maskable"

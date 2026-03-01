@@ -1,11 +1,17 @@
 <script lang="ts">
   import { onMount } from 'svelte'
-  import { t } from 'svelte-i18n'
+  import { t, locale } from 'svelte-i18n'
   import Chart from 'chart.js/auto'
   import 'chartjs-adapter-date-fns'
-  import { appData } from '../stores/data'
+  import { enUS, fr as frLocale, it as itLocale, es as esLocale, de as deLocale } from 'date-fns/locale'
+  import type { Locale } from 'date-fns'
+  import { appData, prefs } from '../stores/data'
   import { lossPercent, estimateCompletion } from '../lib/logic'
+  import { formatWeight } from '../lib/units'
   import type { Item } from '../lib/types'
+
+  const DATE_FNS_LOCALES: Record<string, Locale> = { en: enUS, fr: frLocale, it: itLocale, es: esLocale, de: deLocale }
+  const dateFnsLocale = $derived(DATE_FNS_LOCALES[($locale ?? 'en').split('-')[0]] ?? enUS)
 
   let canvas: HTMLCanvasElement
   let chart: Chart | null = null
@@ -17,7 +23,7 @@
       const sorted = [...item.measurements].sort((a, b) => a.date.localeCompare(b.date))
       const points = [{ x: item.initialDate, y: 0 }]
       for (const m of sorted) {
-        points.push({ x: m.date, y: parseFloat(lossPercent(item.initialWeight, m.weight).toFixed(2)) })
+        points.push({ x: m.date, y: lossPercent(item.initialWeight, m.weight) })
       }
 
       datasets.push({
@@ -88,6 +94,7 @@
     scales: {
       x: {
         type: 'time' as const,
+        adapters: { date: { locale: dateFnsLocale } },
         time: { unit: 'day' as const, tooltipFormat: 'PP' },
         title: { display: true, text: $t('chart.dateLabel'), color: '#999' },
         grid: { color: 'rgba(255,255,255,0.05)' },
@@ -109,6 +116,8 @@
         },
       },
       tooltip: {
+        filter: (item: { dataIndex: number; dataset: { label: string } }) =>
+          !(item.dataset.label.includes($t('chart.projection')) && item.dataIndex === 0),
         callbacks: {
           label: (context: { dataset: { label: string; itemId?: string }; parsed: { y: number } }) => {
             const ds = context.dataset
@@ -117,8 +126,8 @@
             const found = $appData.items.find(i => i.id === ds.itemId)
             if (found) {
               const y = context.parsed.y
-              const weight = (found.initialWeight * (1 - y / 100)).toFixed(0)
-              return `${found.name}: ${y.toFixed(1)}% loss (${weight}g)`
+              const estWeight = found.initialWeight * (1 - y / 100)
+              return `${found.name}: ${y.toFixed(1)}% ${$t('chart.loss')} (${formatWeight(estWeight, $prefs.weightUnit)})`
             }
             return `${ds.label}: ${context.parsed.y.toFixed(1)}%`
           },
@@ -139,6 +148,8 @@
   $effect(() => {
     if (!chart) return
     chart.data.datasets = buildDatasets($appData.items)
+    // @ts-expect-error adapter options not in Chart.js types
+    if (chart.options.scales?.x) chart.options.scales.x.adapters = { date: { locale: dateFnsLocale } }
     chart.update()
   })
 </script>
@@ -147,7 +158,6 @@
   <canvas bind:this={canvas} style:display={$appData.items.length === 0 ? 'none' : 'block'}></canvas>
   {#if $appData.items.length === 0}
     <div class="empty-state">
-      <div style="font-size:2.5rem;">🥩</div>
       <div>{$t('chart.empty')}</div>
     </div>
   {/if}

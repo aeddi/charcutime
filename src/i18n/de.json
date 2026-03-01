@@ -19,7 +19,7 @@
     "notConverging": "Nicht konvergent",
     "measurements": "Messungen",
     "noMeasurements": "Noch keine Messungen.",
-    "weightPlaceholder": "Gewicht (g)",
+    "weightPlaceholder": "Gewicht",
     "addBtn": "Hinzufügen",
     "edit": "Bearbeiten",
     "delete": "Löschen",
@@ -30,7 +30,8 @@
     "dateLabel": "Datum",
     "lossLabel": "Gewichtsverlust %",
     "target": "Ziel",
-    "projection": "Projektion"
+    "projection": "Projektion",
+    "loss": "Verlust"
   },
   "modal": {
     "addTitle": "Neuer Artikel",

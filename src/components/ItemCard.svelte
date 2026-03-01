@@ -86,7 +86,7 @@
 
       <div class="add-measurement-form">
         <input type="date" bind:value={newDate}>
-        <input type="number" bind:value={newWeight} placeholder={$t('itemCard.weightPlaceholder')} min="0.1" step="any" style="width:110px;">
+        <input type="number" bind:value={newWeight} placeholder="{$t('itemCard.weightPlaceholder')} ({weightUnit})" min="0.1" step="any" style="width:110px;">
         <button onclick={handleAdd}>{$t('itemCard.addBtn')}</button>
       </div>
 

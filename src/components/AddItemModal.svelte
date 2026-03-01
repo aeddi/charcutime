@@ -1,6 +1,7 @@
 <script lang="ts">
   import { t } from 'svelte-i18n'
-  import { appData, addItem, updateItem } from '../stores/data'
+  import { appData, addItem, updateItem, prefs } from '../stores/data'
+  import { toDisplayUnit, fromDisplayUnit } from '../lib/units'
 
   let { itemId = null, onClose }: {
     itemId?: string | null
@@ -8,20 +9,23 @@
   } = $props()
 
   const item = itemId ? $appData.items.find(i => i.id === itemId) : null
+  const weightUnit = $derived($prefs.weightUnit)
+  const unitLabel = $derived(weightUnit === 'oz' ? 'oz' : 'g')
 
   let name = $state(item?.name ?? '')
-  let weight = $state(item?.initialWeight?.toString() ?? '')
+  let weight = $state(item ? toDisplayUnit(item.initialWeight, $prefs.weightUnit).toString() : '')
   let date = $state(item?.initialDate ?? new Date().toISOString().slice(0, 10))
   let target = $state(item?.targetLossPercent?.toString() ?? '35')
   let error = $state('')
 
   function save() {
-    const w = parseFloat(weight)
+    const displayVal = parseFloat(weight)
     const t_ = parseFloat(target)
-    if (!name.trim() || !w || !date || !t_) {
+    if (!name.trim() || !displayVal || !date || !t_) {
       error = $t('modal.fillAll')
       return
     }
+    const w = fromDisplayUnit(displayVal, weightUnit)
     if (itemId) {
       updateItem(itemId, { name: name.trim(), initialWeight: w, initialDate: date, targetLossPercent: t_ })
     } else {
@@ -45,7 +49,7 @@
       <input id="input-name" type="text" bind:value={name} placeholder={$t('modal.namePlaceholder')} autofocus>
     </div>
     <div class="form-group">
-      <label for="input-weight">{$t('modal.initialWeight')} (g)</label>
+      <label for="input-weight">{$t('modal.initialWeight')} ({unitLabel})</label>
       <input id="input-weight" type="number" bind:value={weight} min="1" step="any" placeholder="500">
     </div>
     <div class="form-group">
