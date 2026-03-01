@@ -64,6 +64,10 @@
     "import": "Import backup (JSON)",
     "importFailed": "Import failed"
   },
+  "tabs": {
+    "items": "Items",
+    "chart": "Chart"
+  },
   "sync": {
     "loginTitle": "Sign in with GitHub",
     "loginInstructions": "Visit the link below and enter this code to authorize CharcuTime:",

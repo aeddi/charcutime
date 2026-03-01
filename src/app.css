@@ -313,16 +313,43 @@ input:focus, select:focus {
 
 .pref-row select { flex-shrink: 0; }
 
+/* Tab bar (mobile only) */
+.tab-bar { display: none; }
+
 /* Responsive */
 @media (max-width: 768px) {
+  .tab-bar {
+    display: flex;
+    background: var(--surface);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    flex-shrink: 0;
+  }
+  .tab-bar button {
+    flex: 1;
+    padding: 12px;
+    border-radius: 0;
+    border: none;
+    border-bottom: 3px solid transparent;
+    background: transparent;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-bar button:hover { background: rgba(255,255,255,0.04); }
+  .tab-bar button.active {
+    color: var(--text);
+    border-bottom-color: var(--accent);
+  }
   .app { flex-direction: column; }
   .sidebar {
     width: 100%;
     min-width: 0;
-    max-height: 40vh;
     border-right: none;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    flex: 1;
   }
+  .app[data-tab="chart"] .sidebar { display: none; }
+  .app[data-tab="items"] .main { display: none; }
   .pref-panel {
     width: 100%;
     height: auto;

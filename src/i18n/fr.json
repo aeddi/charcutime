@@ -64,6 +64,10 @@
     "import": "Importer (JSON)",
     "importFailed": "Échec de l'importation"
   },
+  "tabs": {
+    "items": "Articles",
+    "chart": "Graphique"
+  },
   "sync": {
     "loginTitle": "Connexion avec GitHub",
     "loginInstructions": "Visitez le lien ci-dessous et entrez ce code pour autoriser CharcuTime :",
