@@ -1,4 +1,4 @@
-# Charcutime
+# CharcuTime
 
 A simple web app to track the drying progress of your homemade charcuterie. Monitor weight loss over time, set target goals, and visualize everything on an interactive chart.
 
