@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <!-- Background -->
+  <rect width="512" height="512" rx="80" fill="#1a1a2e"/>
+
+  <!-- Stopwatch body -->
+  <circle cx="256" cy="290" r="168" fill="#16213e" stroke="#e94560" stroke-width="14"/>
+
+  <!-- Stopwatch crown (top button) -->
+  <rect x="226" y="96" width="60" height="30" rx="10" fill="#e94560"/>
+
+  <!-- Crown stem -->
+  <rect x="245" y="120" width="22" height="28" rx="4" fill="#e94560"/>
+
+  <!-- Side button -->
+  <rect x="390" y="170" width="36" height="18" rx="8" fill="#e94560" transform="rotate(30 408 179)"/>
+
+  <!-- Clock face inner ring -->
+  <circle cx="256" cy="290" r="148" fill="none" stroke="#0f3460" stroke-width="6"/>
+
+  <!-- Hour ticks -->
+  <g stroke="#999" stroke-width="4" stroke-linecap="round">
+    <line x1="256" y1="150" x2="256" y2="168"/>
+    <line x1="256" y1="412" x2="256" y2="430"/>
+    <line x1="116" y1="290" x2="134" y2="290"/>
+    <line x1="378" y1="290" x2="396" y2="290"/>
+  </g>
+
+  <!-- Center pin -->
+  <circle cx="256" cy="290" r="10" fill="#e94560"/>
+
+  <!-- Sausage hand 1 (minute, pointing roughly to 10 o'clock) -->
+  <g transform="rotate(-60 256 290)">
+    <!-- Sausage body -->
+    <rect x="242" y="168" width="28" height="95" rx="14" fill="#bc6c25"/>
+    <!-- Sausage end caps -->
+    <ellipse cx="256" cy="168" rx="14" ry="10" fill="#dda15e"/>
+    <ellipse cx="256" cy="263" rx="14" ry="10" fill="#a05a1e"/>
+    <!-- Sausage highlight -->
+    <ellipse cx="262" cy="205" rx="5" ry="18" fill="#e8a96a" opacity="0.5"/>
+    <!-- Sausage ties -->
+    <line x1="242" y1="185" x2="270" y2="185" stroke="#8b4513" stroke-width="3" stroke-linecap="round"/>
+    <line x1="242" y1="248" x2="270" y2="248" stroke="#8b4513" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Sausage hand 2 (hour, pointing roughly to 2 o'clock) -->
+  <g transform="rotate(60 256 290)">
+    <!-- Sausage body (shorter) -->
+    <rect x="245" y="220" width="22" height="65" rx="11" fill="#bc6c25"/>
+    <!-- Sausage end caps -->
+    <ellipse cx="256" cy="220" rx="11" ry="8" fill="#dda15e"/>
+    <ellipse cx="256" cy="285" rx="11" ry="8" fill="#a05a1e"/>
+    <!-- Sausage highlight -->
+    <ellipse cx="261" cy="250" rx="4" ry="14" fill="#e8a96a" opacity="0.5"/>
+    <!-- Sausage ties -->
+    <line x1="245" y1="233" x2="267" y2="233" stroke="#8b4513" stroke-width="2" stroke-linecap="round"/>
+    <line x1="245" y1="272" x2="267" y2="272" stroke="#8b4513" stroke-width="2" stroke-linecap="round"/>
+  </g>
+</svg>
