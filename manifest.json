@@ -1,0 +1,25 @@
+{
+  "name": "CharcuTime",
+  "short_name": "CharcuTime",
+  "description": "Track your charcuterie drying progress",
+  "start_url": "/charcutime/",
+  "scope": "/charcutime/",
+  "display": "standalone",
+  "background_color": "#1a1a2e",
+  "theme_color": "#e94560",
+  "icons": [
+    {
+      "src": "/charcutime/icon-bg.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/charcutime/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["food", "health", "utilities"]
+}
