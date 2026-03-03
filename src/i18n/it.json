@@ -69,14 +69,8 @@
     "chart": "Grafico"
   },
   "sync": {
-    "loginTitle": "Accedi con GitHub",
-    "loginInstructions": "Visita il link qui sotto e inserisci questo codice per autorizzare CharcuTime:",
-    "openGitHub": "Apri github.com/login/device",
-    "copyCode": "Copia codice",
-    "cancel": "Annulla",
-    "waitingForAuth": "In attesa di autorizzazione…",
-    "starting": "Avvio autorizzazione…",
     "loginBtn": "Accedi con GitHub",
+    "loginBtnGoogle": "Accedi con Google",
     "logout": "Disconnetti",
     "syncNow": "Sincronizza ora",
     "forceUpload": "Forza caricamento (locale → remoto)",
@@ -88,10 +82,11 @@
     "conflictTitle": "Conflitto di sincronizzazione",
     "conflictDesc": "Esistono dati locali e remoti. Come vuoi risolvere?",
     "local": "Locale",
-    "remote": "Remoto (Gist)",
+    "remote": "Remoto (Cloud)",
     "items": "articoli",
     "merge": "Unisci (consigliato)",
     "keepLocal": "Mantieni locale",
-    "keepRemote": "Mantieni remoto"
+    "keepRemote": "Mantieni remoto",
+    "quotaError": "Quota di sincronizzazione superata. Riprova domani."
   }
 }

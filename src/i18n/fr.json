@@ -69,14 +69,8 @@
     "chart": "Graphique"
   },
   "sync": {
-    "loginTitle": "Connexion avec GitHub",
-    "loginInstructions": "Visitez le lien ci-dessous et entrez ce code pour autoriser CharcuTime :",
-    "openGitHub": "Ouvrir github.com/login/device",
-    "copyCode": "Copier le code",
-    "cancel": "Annuler",
-    "waitingForAuth": "En attente d'autorisation…",
-    "starting": "Démarrage de l'autorisation…",
     "loginBtn": "Se connecter avec GitHub",
+    "loginBtnGoogle": "Se connecter avec Google",
     "logout": "Se déconnecter",
     "syncNow": "Synchroniser",
     "forceUpload": "Forcer l'envoi (local → distant)",
@@ -88,10 +82,11 @@
     "conflictTitle": "Conflit de synchronisation",
     "conflictDesc": "Des données locales et distantes existent. Comment voulez-vous résoudre cela ?",
     "local": "Local",
-    "remote": "Distant (Gist)",
+    "remote": "Distant (Cloud)",
     "items": "articles",
     "merge": "Fusionner (recommandé)",
     "keepLocal": "Garder local",
-    "keepRemote": "Garder distant"
+    "keepRemote": "Garder distant",
+    "quotaError": "Quota de synchronisation dépassé. Veuillez réessayer demain."
   }
 }

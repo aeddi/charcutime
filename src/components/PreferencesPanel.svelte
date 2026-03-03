@@ -1,10 +1,10 @@
 <script lang="ts">
   import { t, locale } from 'svelte-i18n'
-  import { prefs, updatePrefs, exportData, importDataFromFile, syncState, syncNow, startLogin, logout } from '../stores/data'
+  import { prefs, updatePrefs, exportData, importDataFromFile, syncState, syncNow, logout } from '../stores/data'
   import { SUPPORTED_LOCALES, LOCALE_LABELS, resolveLocale, setupI18n } from '../i18n'
   import { version } from '../../package.json'
 
-  let { onClose, onStartLogin }: { onClose: () => void; onStartLogin: () => void } = $props()
+  let { onClose, onStartLogin }: { onClose: () => void; onStartLogin: (provider: 'github' | 'google') => void } = $props()
 
   let fileInput: HTMLInputElement
 
@@ -26,7 +26,7 @@
   }
 
   const currentLocale = $derived($prefs.language ?? resolveLocale(null))
-  const isSyncing = $derived($syncState.status === 'syncing' || $syncState.status === 'polling')
+  const isSyncing = $derived($syncState.status === 'syncing')
 </script>
 
 <!-- svelte-ignore a11y_no_static_element_interactions a11y_click_events_have_key_events -->
@@ -79,10 +79,10 @@
 
     <div class="pref-section">
       <h3>{$t('prefs.sync')}</h3>
-      {#if $syncState.username}
+      {#if $syncState.displayName}
         <div class="pref-row" style="margin-bottom:6px;">
           <span>{$t('sync.loggedInAs')}</span>
-          <span style="font-weight:600;">@{$syncState.username}</span>
+          <span style="font-weight:600;">{$syncState.displayName}</span>
         </div>
         <div class="pref-row" style="margin-bottom:12px;font-size:0.8rem;color:var(--text-muted);">
           <span>{$t('sync.lastSynced')}</span>
@@ -100,7 +100,8 @@
           <p style="color:var(--accent);font-size:0.8rem;margin-top:8px;">{$syncState.error}</p>
         {/if}
       {:else}
-        <button onclick={onStartLogin}>{$t('sync.loginBtn')}</button>
+        <button onclick={() => onStartLogin('github')}>{$t('sync.loginBtn')}</button>
+        <button onclick={() => onStartLogin('google')}>{$t('sync.loginBtnGoogle')}</button>
       {/if}
     </div>
 

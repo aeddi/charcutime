@@ -69,14 +69,8 @@
     "chart": "Chart"
   },
   "sync": {
-    "loginTitle": "Sign in with GitHub",
-    "loginInstructions": "Visit the link below and enter this code to authorize CharcuTime:",
-    "openGitHub": "Open github.com/login/device",
-    "copyCode": "Copy code",
-    "cancel": "Cancel",
-    "waitingForAuth": "Waiting for authorization…",
-    "starting": "Starting authorization…",
     "loginBtn": "Sign in with GitHub",
+    "loginBtnGoogle": "Sign in with Google",
     "logout": "Sign out",
     "syncNow": "Sync now",
     "forceUpload": "Force upload (local → remote)",
@@ -88,10 +82,11 @@
     "conflictTitle": "Sync Conflict",
     "conflictDesc": "Both local and remote data exist. How would you like to resolve this?",
     "local": "Local",
-    "remote": "Remote (Gist)",
+    "remote": "Remote (Cloud)",
     "items": "items",
     "merge": "Merge (recommended)",
     "keepLocal": "Keep local",
-    "keepRemote": "Keep remote"
+    "keepRemote": "Keep remote",
+    "quotaError": "Sync quota exceeded. Please try again tomorrow."
   }
 }

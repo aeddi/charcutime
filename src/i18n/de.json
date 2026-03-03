@@ -69,14 +69,8 @@
     "chart": "Diagramm"
   },
   "sync": {
-    "loginTitle": "Mit GitHub anmelden",
-    "loginInstructions": "Besuche den Link und gib diesen Code ein, um CharcuTime zu autorisieren:",
-    "openGitHub": "github.com/login/device öffnen",
-    "copyCode": "Code kopieren",
-    "cancel": "Abbrechen",
-    "waitingForAuth": "Warte auf Autorisierung…",
-    "starting": "Autorisierung starten…",
     "loginBtn": "Mit GitHub anmelden",
+    "loginBtnGoogle": "Mit Google anmelden",
     "logout": "Abmelden",
     "syncNow": "Jetzt synchronisieren",
     "forceUpload": "Hochladen erzwingen (lokal → extern)",
@@ -88,10 +82,11 @@
     "conflictTitle": "Synchronisierungskonflikt",
     "conflictDesc": "Lokale und externe Daten vorhanden. Wie möchtest du fortfahren?",
     "local": "Lokal",
-    "remote": "Extern (Gist)",
+    "remote": "Extern (Cloud)",
     "items": "Artikel",
     "merge": "Zusammenführen (empfohlen)",
     "keepLocal": "Lokal behalten",
-    "keepRemote": "Extern behalten"
+    "keepRemote": "Extern behalten",
+    "quotaError": "Synchronisierungskontingent erschöpft. Bitte morgen erneut versuchen."
   }
 }
