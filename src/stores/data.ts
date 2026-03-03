@@ -153,6 +153,10 @@ function mergeData(local: AppData, remote: AppData): AppData {
   return { items: Array.from(map.values()) }
 }
 
+function stableKey(data: AppData): string {
+  return JSON.stringify(data.items.slice().sort((a, b) => a.id.localeCompare(b.id)))
+}
+
 async function pushToFirestore(data: AppData) {
   const { uid } = get(syncState)
   if (!uid) return
@@ -205,7 +209,23 @@ export async function syncNow(opts?: { forceDirection?: 'upload' | 'download' })
       return
     }
 
-    // Both non-empty — let the UI decide (conflict dialog)
+    // Both non-empty — auto-merge and check if either side adds anything new
+    const merged = mergeData(local, remote)
+    const mergedKey = stableKey(merged)
+
+    if (mergedKey === stableKey(local)) {
+      // Remote adds nothing new — already up to date
+      syncState.update(s => ({ ...s, status: 'idle', lastSynced: new Date().toISOString() }))
+      return
+    }
+
+    if (mergedKey === stableKey(remote)) {
+      // Local is a superset — push local to remote silently
+      await pushToFirestore(local)
+      return
+    }
+
+    // Both sides have data the other lacks — let the UI decide
     pendingConflict.set({ local, remote })
     syncState.update(s => ({ ...s, status: 'idle' }))
   } catch (e) {
