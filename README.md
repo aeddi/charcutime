@@ -2,6 +2,8 @@
   <img src="public/banner.svg" alt="CharcuTime" height="100" />
 </div>
 
+---
+
 A simple web app to track the drying progress of your homemade charcuterie. Monitor weight loss over time, set target goals, and visualize everything on an interactive chart.
 
 <img width="2247" height="1440" alt="screenshot" src="https://github.com/user-attachments/assets/1bf4d811-9a8a-43bd-b6f6-711656b0ed92" />
