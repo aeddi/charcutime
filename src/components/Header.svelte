@@ -7,7 +7,7 @@
 <header>
   <h1><img src="{import.meta.env.BASE_URL}icon.svg" alt="" class="logo" aria-hidden="true" />Charcu<span>Time</span></h1>
   <button class="gear-btn" onclick={onSettingsClick} title={$t('header.preferences')} aria-label={$t('header.preferences')}>
-    ⚙
+    <img src="{import.meta.env.BASE_URL}gear.svg" alt="" aria-hidden="true" class="gear-icon" />
   </button>
 </header>
 
@@ -35,5 +35,10 @@
   .gear-btn:hover {
     color: var(--text);
     background: none;
+  }
+  .gear-icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    display: block;
   }
 </style>
